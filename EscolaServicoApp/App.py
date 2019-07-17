@@ -6,8 +6,17 @@ import logging
 
 app = Flask(__name__)
 
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+handler = logging.FileHandler("escolaapp.log")
+handler.setFormatter(formatter)
+logger = app.logger
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+
+
 @app.route("/escolas", methods=["GET"])
 def getEscolas():
+    logger.info("Listando escolas.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -29,6 +38,7 @@ def getEscolas():
 
 @app.route("/escolas/<int:id>", methods=["GET"])
 def getEscolaByID(id):
+    logger.info("Listando escolas pelo ID.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -48,7 +58,8 @@ def getEscolaByID(id):
 
 @app.route("/escola", methods=["POST"])
 def setEscola():
-escola = request.get_json()
+    logger.info("Cadastrando escolas.")
+    escola = request.get_json()
     nome = escola['nome']
     logradouro = escola['logradouro']
     cidade = escola['cidade']
@@ -70,6 +81,7 @@ escola = request.get_json()
 
 @app.route("/alunos", methods=["GET"])
 def getAlunos():
+    logger.info("Listando alunos.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -91,6 +103,7 @@ def getAlunos():
 
 @app.route("/alunos/<int:id>", methods=["GET"])
 def getAlunosByID(id):
+    logger.info("Listando alunos por ID.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -112,6 +125,7 @@ def getAlunosByID(id):
 
 @app.route("/aluno", methods=["POST"])
 def setAlunos():
+    logger.info("Cadastrando alunos.")
 
     aluno = request.get_json()
 
@@ -135,6 +149,7 @@ def setAlunos():
 
 @app.route("/cursos", methods=["GET"])
 def getCurso():
+    logger.info("Listando cursos.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -158,6 +173,7 @@ def getCurso():
 
 @app.route("/cursos/<int:id>", methods=["GET"])
 def getCursoByID(id):
+    logger.info("Listando cursos pelo ID.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -177,6 +193,7 @@ def getCursoByID(id):
 
 @app.route("/curso", methods=["POST"])
 def setCurso():
+    logger.info("Cadastrando curso.")
     curso = request.get_json()
     nome = curso['nome']
     turno = curso['turno']
@@ -197,6 +214,7 @@ def setCurso():
 
 @app.route("/turmas", methods=["GET"])
 def getTurma():
+    logger.info("Listando Turma.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -218,6 +236,7 @@ def getTurma():
 
 @app.route("/turmas/<int:id>", methods=["GET"])
 def getTurmaByID(id):
+    logger.info("Listando Turmas por ID.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -237,6 +256,7 @@ def getTurmaByID(id):
 
 @app.route("/turma", methods=["POST"])
 def setTurma():
+    logger.info("Cadastrando Turmas.")
     turma = request.get_json()
     nome = turma['nome']
     curso = turma['curso']
@@ -256,6 +276,7 @@ def setTurma():
 
 @app.route("/disciplinas", methods=["GET"])
 def getDisciplinas():
+    logger.info("Listando disciplinas.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -277,6 +298,7 @@ def getDisciplinas():
 
 @app.route("/disciplinas/<int:id>", methods=["GET"])
 def getDisciplinaByID(id):
+    logger.info("Listando disciplinas por ID.")
     conn = sqlite3.connect('IFPB.db')
     cursor = conn.cursor()
     cursor.execute("""
@@ -297,6 +319,7 @@ def getDisciplinaByID(id):
 
 @app.route("/disciplina", methods=["POST"])
 def setDisciplina():
+    logger.info("Cadastrando Disciplina.")
     disciplina = request.get_json()
     nome = disciplina['nome']
     conn = sqlite3.connect('IFPB.db')
