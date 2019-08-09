@@ -76,7 +76,7 @@ def setEscola():
     logradouro = escola['logradouro']
     cidade = escola['cidade']
     conn = sqlite3.connect('IFPB.db')
-    try:
+
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO tb_escola(nome, logradouro, cidade)
@@ -227,6 +227,7 @@ def getCursoByID(id):
 
 @app.route("/curso", methods=["POST"])
 def setCurso():
+
     logger.info("Cadastrando curso.")
     curso = request.get_json()
     nome = curso['nome']

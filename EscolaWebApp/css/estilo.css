@@ -1,4 +1,13 @@
-.container{
+body{
+  font-family: arial, verdana, helvetica, sans-serif;
+}
+
+div.container{
+  border: 1px solid blue;
   margin: 0 auto;
-  border: 1px solid red;
+}
+
+header{
+  font-color: #FFFAFA
+
 }
