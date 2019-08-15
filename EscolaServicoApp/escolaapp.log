@@ -56,3 +56,12 @@
 2019-08-15 08:09:00,234 - ERROR - Houve um erro no Cadastro de um Turno
 2019-08-15 08:09:38,179 - INFO - Cadastrando Turno
 2019-08-15 08:09:47,403 - INFO - Listando Turnos
+2019-08-15 13:26:25,634 - INFO - Cadastrando um Novo Endereço
+2019-08-15 13:26:40,265 - INFO - Cadastrando um Novo Endereço
+2019-08-15 13:27:34,669 - INFO - Listando Endereços
+2019-08-15 14:59:49,237 - INFO - Cadastrando um Novo Endereço
+2019-08-15 14:59:56,986 - INFO - Listando Endereços
+2019-08-15 15:02:42,244 - INFO - Aconteceu um erro
+2019-08-15 15:06:27,374 - INFO - Cadastrando um Novo Campus
+2019-08-15 15:06:47,469 - INFO - Listando Todos os Campus
+2019-08-15 15:08:10,109 - INFO - Listando Turnos

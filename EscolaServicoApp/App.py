@@ -30,27 +30,27 @@ schema_escola = {
 schema_campus = {
     'required': ['sigla', 'cidade'],
     'properties': {
-    'sigla': {'type': 'string'},
-    'cidade': {'type': 'string'}
+        'sigla': {'type': 'string'},
+        'cidade': {'type': 'string'}
     }
 }
 
 
 schema_endereco = {
-    'required': ['logradouro', 'complemento', 'bairro', 'cep', 'numero'],
+    'required': ['logradouro', 'complemento',  'bairro', 'cep', 'numero'],
     'properties': {
-    'logradouro': {'type': 'string'},
-    'complemento': {'type': 'string'},
-    'bairro': {'type': 'string'},
-    'cep': {'type': 'string'},
-    'numero': {'type': 'integer'}
+        'logradouro': {'type': 'string'},
+        'complemento': {'type': 'string'},
+        'bairro': {'type': 'string'},
+        'cep': {'type': 'string'},
+        'numero': {'type': 'integer'}
     }
 }
 
 schema_turno = {
     'required': ['nome'],
     'properties': {
-    'nome': {'type': 'string'}
+        'nome': {'type': 'string'}
     }
 }
 
@@ -71,33 +71,33 @@ schema_aluno = {
 schema_curso = {
     'required': ['nome','turno','fk_id_turno'],
     'properties': {
-    'nome': {'type': 'string'},
-    'turno': {'type': 'string'},
-    'id_turno': {'type': 'integer'}
+        'nome': {'type': 'string'},
+        'turno': {'type': 'string'},
+        'id_turno': {'type': 'integer'}
     }
 }
 
 schema_turma = {
     'required': ['nome','fk_id_curso'],
     'properties': {
-    'nome': {'type': 'string'},
-    'id_curso': {'type': 'integer'}
+        'nome': {'type': 'string'},
+        'id_curso': {'type': 'integer'}
     }
 }
 
 schema_professor = {
     'required': ['nome', 'fk_id_endereco'],
     'properties': {
-    'nome': {'type': 'string'},
-    'id_endereco': {'type': 'integer'}
+        'nome': {'type': 'string'},
+        'id_endereco': {'type': 'integer'}
     }
 }
 
 schema_disciplina = {
     'required': ['nome', 'fk_id_professor'],
     'properties': {
-    'nome': {'type': 'string'},
-    'id_professor': {'type': 'integer'}
+        'nome': {'type': 'string'},
+        'id_professor': {'type': 'integer'}
     }
 }
 
