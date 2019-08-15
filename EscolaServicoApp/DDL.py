@@ -72,7 +72,6 @@ cursor.execute("""
     CREATE TABLE tb_curso(
         id_curso INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
         nome VARCHAR(45) NOT NULL,
-        turno VARCHAR(10) NOT NULL,
         fk_id_turno INTEGER NOT NULL,
         FOREIGN KEY(fk_id_turno) REFERENCES tb_turno (id_turno)
     );

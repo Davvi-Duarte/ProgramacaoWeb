@@ -72,7 +72,6 @@ schema_curso = {
     'required': ['nome','turno','fk_id_turno'],
     'properties': {
         'nome': {'type': 'string'},
-        'turno': {'type': 'string'},
         'id_turno': {'type': 'integer'}
     }
 }
@@ -278,7 +277,7 @@ def setAlunos():
         nome = aluno['nome']
         matricula = aluno['matricula']
         cpf = aluno['cpf']
-        nascimento = aluno['datanasc']
+        nascimento = aluno['nascimento']
         fk_id_endereco = aluno['fk_id_endereco']
         fk_id_curso = aluno['fk_id_curso']
         conn = sqlite3.connect(database)
@@ -493,7 +492,7 @@ def setTurma():
     try:
         turma = request.get_json()
         nome = turma['nome']
-        curso = turma['curso']
+        fk_id_curso = turma['fk_id_curso']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -600,7 +599,7 @@ def setDisciplina():
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO tb_disciplina(nome, fk_id_professor)
-            VALUES(?); """, (nome, fk_id_professor))
+            VALUES(?, ?); """, (nome, fk_id_professor))
         conn.commit()
         conn.close()
         id = cursor.lastrowid
@@ -794,8 +793,8 @@ def setProfessor():
     logger.info("Cadastrando Professor")
     try:
         professor = request.get_json()
-        nome = aluno['nome']
-        fk_id_endereco = aluno['fk_id_endereco']
+        nome = professor['nome']
+        fk_id_endereco = professor['fk_id_endereco']
         print(nome, fk_id_endereco)
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
