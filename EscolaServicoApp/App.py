@@ -122,13 +122,12 @@ def getEscolas():
             "id_campus":linha[3]
 
             }
-            escolas.append(escolas)
+            escolas.append(escola)
         conn.close()
     except(sqlite3.Error):
         logger.error("Aconteceu um erro")
 
     return jsonify(escolas)
-
 
 
 @app.route("/escolas/<int:id>", methods=["GET"])
