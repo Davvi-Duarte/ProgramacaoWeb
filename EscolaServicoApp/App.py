@@ -308,7 +308,7 @@ def updateAluno(id):
         fk_id_endereco = aluno["fk_id_endereco"]
         fk_id_curso = aluno["fk_id_curso"]
 
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -414,7 +414,7 @@ def updateCurso(id):
         curso = request.get_json()
         nome = curso['nome']
         fk_id_turno = curso['fk_id_turno']
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -515,7 +515,7 @@ def updateTurma(id):
         turma = request.get_json()
         nome = turma['nome']
         fk_id_curso = turma['fk_id_curso']
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -618,7 +618,7 @@ def updateDisciplina(id):
         disciplina = request.get_json()
         nome = disciplina['nome']
         fk_id_professor = disciplina['fk_id_professor']
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -719,7 +719,7 @@ def updateCampus(id):
         campus = request.get_json()
         sigla = campus["sigla"]
         cidade = campus["cidade"]
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -818,7 +818,7 @@ def updateProfessor(id):
         professor = request.get_json()
         nome = professor["nome"]
         fk_id_endereco = professor["fk_id_endereco"]
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -912,7 +912,7 @@ def updateTurno(id):
     try:
         turno = request.get_json()
         nome = turno["nome"]
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
@@ -1023,7 +1023,7 @@ def updateEndereco(id):
         bairro = endereco["bairro"]
         cep = endereco["cep"]
         numero = endereco["numero"]
-        conn = sqlite3.connect(databaseName)
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             SELECT *
