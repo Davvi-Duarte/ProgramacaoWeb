@@ -8,11 +8,58 @@
     <link rel="stylesheet" type="text/css"
       href="css/menu.css">
 
-    <!-- Bootstrap -->
+    <!--Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+    let nome = "Joao da Silva";
+    console.log(nome)
+
+    var nota = 10;
+
+    if(nota>= 7){
+      console.log("Aprovado");
+    } else{
+      console.log("Reprovado");
+    }
+
+    for (i=0;i<=10;i++){
+      console.log(i);
+    }
+
+    let nomes = ["Davvi", "Duarte", "Rodrigues"];
+    for (nome of nomes){
+      console.log(nome);
+    }
+    for (nome in nomes){
+      console.log(nome);
+    }
+
+    let num1=5
+    let num2=3
+
+    function Soma(num1, num2) {
+      let resultado = num1+num2;
+      return resultado;
+    }
+    let resultado=Soma(num1, num2);
+    console.log(Soma(num1,num2));
+    console.log(resultado);
+
+    let Multiplicacao = function(num1,num2){
+      let resul = num1 * num2;
+      return resul;
+    };
+    let resul = Multiplicacao(num1, num2);
+    console.log(resul);
+    console.log(Multiplicacao(num1, num2));
+
+    </script>
+
   </head>
   <body>
     <div class="meu-container">
@@ -27,8 +74,6 @@
                 Aluno
               </a>
             </li>
-            <li><a href="endereco.html">Endereço</a></li>
-            <li><a href="aluno.html">Aluno</a></li>
             <li><a href="curso.html">Curso</a></li>
             <li><a href="disciplina.html">Disciplina</a></li>
             <li><a href="escola.html">Escola</a></li>
@@ -36,6 +81,7 @@
             <li><a href="professor.html">Professor</a></li>
             <li><a href="campus.html">Campus</a></li>
             <li><a href="turno.html">Turno</a></li>
+            <li><a href="endereco.html">Endereço</a></li>
 
           </ul>
           </nav>
