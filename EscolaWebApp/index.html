@@ -22,8 +22,11 @@
 	</head>
 	<body>
 		<div class="meu-container">
-			<header ng-controller="MeuSegundoController">
+
+			<header>
+
 				Cadastros
+
 				<nav class="navbar navbar-expand-lg navigation">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon white">=</span>
@@ -48,7 +51,9 @@
           </div>
         </nav>
 			</header>
-			<main ng-controller="MeuPrimeiroController">
+
+			<main ng-controller="HomeController">
+
 				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	  			<div class="carousel-inner">
 	    			<div class="carousel-item active">
@@ -93,18 +98,19 @@
     				</div>
   				</div>
 				</div>
-				<input type="text" ng-model="logradouro" name="logradouro" value="">
-				<h1>Meu logradouro é {{logradouro}} :)</h1>
+				<!-- <input type="text" ng-model="logradouro" name="logradouro" value="">
+
+				<h1>Meu logradouro é ({{logradouro}}:)</h1>
 
 				<input type="number" ng-model="numero1">
 				<input type="number" ng-model="numero2">
 
 				<button ng-click="somar(numero1, numero2)" >Somar</button>
 
-				<h2>{{resultado}}</h2>
+				<h2>{{resultado}}</h2>-->
 			</main>
 			<footer>
-				<h6> Projeto - Beatriz Pontes da Costa e Emanuelle Alves de Lima</h6>
+				<h6> Projeto - Turma Informática IV</h6>
 			</footer>
 		</div>
 	</body>

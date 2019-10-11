@@ -1,25 +1,86 @@
 // Inicializar o módulo.
 let nomeApp = 'EscolaWebApp';
 let modulos = [];
-
 var app = angular.module(nomeApp, modulos);
 
-//Estrutura básica para uma função no controlador.
-//toda variável associada ao $scope: se eu modificar no JS, modifico na tela.
-var MeuPrimeiroController = function($scope){
-  $scope.logradouro = 'Outro valor';
-  $scope.numero1 = 0;
-  $scope.numero2 = 0;
+// Estrutura básica para uma função no controlador.
+var homeController = function($scope){
+  $scope.nome = "";
 
-  $scope.somar = function(numero1, numero2){
-    $scope.resultado = numero1 + numero2;
+  $scope.desejarBoasVindas = function() {
+    let nome = $scope.nome;
+    $scope.mensagem = "Olá, " + nome;
   }
 }
 
-app.controller('MeuPrimeiroController', MeuPrimeiroController);
+app.controller('HomeController', homeController);
 
-var MeuSegundoController = function($scope){
-  $scope.logradouro = 'Outro valor';
+var alunoController = function($scope){
+  $scope.nome = "";
+  $scope.matricula = "";
+  $scope.cpf = "";
+  $scope.nascimento = "";
+  $scope.id_endereço = "";
+  $scope.id_endereço = "";
 }
 
-app.controller('MeuSegundoController', MeuSegundoController);
+app.controller('AlunoController', alunoController);
+
+var campusController = function($scope){
+  $scope.sigla = "";
+  $scope.cidade = "";
+}
+
+app.controller('CampusController', campusController);
+
+var campusController = function($scope){
+  $scope.nome = "";
+  $scope.id_turno = "";
+}
+
+app.controller('CursoController', cursoController);
+
+var turnoController = function($scope){
+  $scope.nome = "";
+}
+
+app.controller('TurnoController', turnoController);
+
+var disciplinaController = function($scope){
+  $scope.nome = "";
+  $scope.id_professor = "";
+}
+
+app.controller('DisciplinaController', disciplinaController);
+
+var enderecoController = function($scope){
+  $scope.logradouro = "";
+  $scope.complemento = "";
+  $scope.bairro = "";
+  $scope.cep = "";
+  $scope.numero = "";
+}
+
+app.controller('EnderecoController', enderecoController);
+
+var escolaController = function($scope){
+  $scope.nome = "";
+  $scope.id_endereco = "";
+  $scope.id_campus = "";
+
+}
+
+app.controller('EscolaController', escolaController);
+
+var professorController = function($scope){
+  $scope.nome = "";
+  $scope.id_endereco = "";
+}
+
+app.controller('ProfessorController', professorController);
+
+var turmaController = function($scope){
+  $scope.nome = "";
+}
+
+app.controller('TurmaController', turmaController);
