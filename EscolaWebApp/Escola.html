@@ -25,7 +25,7 @@
   </head>
   <body>
     <header>
-      Cadastros
+      <a href="index.html">Cadastros</a>
       <nav class="navbar navbar-expand-lg navigation">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon white">=</span>
@@ -50,26 +50,48 @@
         </div>
       </nav>
     </header>
-<main ng-controller="EscolaController">
+<main ng-controller="EscolaController" class="forms">
     <h1 class="escola"> Cadastrar Escolas</h1>
-      <form class="formescola formulario" action="http://localhost:5000/escola" method="POST">
+      <form class="formulario" name="formescola" action="http://localhost:5000/escola" method="POST">
         <div class="form-group">
           <label for="nome">Nome da Escola: </label>
-          <input type="text" class="form-control" name="nome">
+          <input type="text" class="form-control" name="nome"
+          ng-model="escola.nome" placeholder="Nome" ng-required="true" />
+
+          <div ng-messages="formescola.nome.$error" ng-if='formescola.nome.$dirty'>
+      			<div ng-message="required" class="alert alert-danger">
+      				Por favor, preencha o campo nome!
+      			</div>
+      		</div>
         </div>
         <div class="form-group">
           <label for="id_endereco">Endereço: </label>
-          <input type="text" class="form-control" name="id_endereco">
+          <input type="text" class="form-control" name="id_endereco"
+          ng-model="escola.id_endereco" placeholder="Id endereço" ng-required="true">
+
+          <div ng-messages="formescola.id_endereco.$error" ng-if='formescola.id_endereco.$dirty'>
+      			<div ng-message="required" class="alert alert-danger">
+      				Por favor, preencha o campo ID endereço!
+      			</div>
+      		</div>
         </div>
         <div class="form-group">
           <label for="id_campus">Campus: </label>
-          <input type="text" class="form-control" name="id_campus">
+          <input type="text" class="form-control" name="id_campus"
+          ng-model="escola.id_campus" placeholder="Id campus" ng-required="true" ng-minlength="1">
+
+          <div ng-messages="formescola.id_campus.$error" ng-if='formescola.id_campus.$dirty'>
+      			<div ng-message="required" class="alert alert-danger">
+      				Por favor, preencha o campo ID campus!
+      			</div>
+      		</div>
         </div>
-        <button type="button" class="btn btn-outline-light btn-block">Cadastrar</button>
+        <input type= 'reset' name='limpar' value= 'Limpar' class="btn btn-secondary btn-lg btn-block">
+            <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block">Cadastrar</button>
       </form>
     </main>
     <footer>
-      <h6> Projeto - Turma informática IV</h6>
+      <h6> Projeto - Turma informática IV - Davvi Duarte</h6>
     </footer>
   </body>
 </html>

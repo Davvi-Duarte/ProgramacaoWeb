@@ -24,7 +24,7 @@
   </head>
   <body>
     <header>
-      Cadastros
+      <a href="index.html">Cadastros</a>
       <nav class="navbar navbar-expand-lg navigation">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon white">=</span>
@@ -47,18 +47,28 @@
         </div>
       </nav>
     </header>
-    <main ng-controller="TurnoController">
+    <main ng-controller="TurnoController" class="forms">
     <h1 class="turno"> Cadastrar Turno</h1>
-      <form class="formturno formulario" action="http://localhost:5000/turno" method="POST">
+      <form class="formulario" name="formturno" action="http://localhost:5000/turno" method="POST">
         <div class="form-group">
-          <label for="nome">Turno: </label>
-          <input type="text" class="form-control" name="nome">
-        </div>
+         <label for="nome">Turno: </label>
+         <input type="text" class="form-control" name="nome"
+         ng-model="turno.nome" placeholder="Nome" ng-required="true" ng-minlength="1"/>
+
+         <div ng-messages="formturno.nome.$error" ng-if='formturno.nome.$dirty'>
+           <div ng-message="required" class="alert alert-danger">
+             Por favor, preencha o campo nome!
+           </div>
+           <div ng-message="minlength" class="alert alert-info">
+             O campo nome deve ter no mínimo 10 caracteres.
+           </div>
+         </div>
+       </div>
         <button type="button" class="btn btn-outline-light btn-block">Cadastrar</button>
       </form>
     </main>
     <footer>
-      <h6> Projeto - Turma informática IV</h6>
+      <h6> Projeto - Turma informática IV - Davvi Duarte</h6>
     </footer>
   </body>
 </html>

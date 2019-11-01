@@ -27,7 +27,7 @@
   </head>
   <body>
     <header>
-      Cadastros
+      <a href="index.html">Cadastros</a>
       <nav class="navbar navbar-expand-lg navigation">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon white">=</span>
@@ -52,22 +52,42 @@
         </div>
       </nav>
     </header>
-    <main ng-controller="CursoController">
+    <main ng-controller="CursoController" class="forms">
       <h1 class="curso"> Cadastrar Cursos</h1>
-      <form class="formcurso formulario" action="http://localhost:5000/curso" method="POST">
+      <form name="formcurso" class="formcurso formulario" action="http://localhost:5000/curso" method="POST">
+
         <div class="form-group">
-          <label for="nome">Nome do Curso: </label>
-          <input type="text" class="form-control" name="nome">
-        </div>
-        <div class="form-group">
-          <label for="id_turno">Turno: </label>
-          <input type="text" class="form-control" name="id_turno">
-        </div>
-        <button type="button" class="btn btn-outline-light btn-block">Cadastrar</button>
+           <label for="nome">Nome do Curso: </label>
+           <input type="text" class="form-control" name="nome"
+           ng-model="curso.nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
+
+           <div ng-messages="formcurso.nome.$error" ng-if='formcurso.nome.$dirty'>
+       			<div ng-message="required" class="alert alert-danger">
+       				Por favor, preencha o campo nome!
+       			</div>
+       			<div ng-message="minlength" class="alert alert-info">
+       				O campo nome deve ter no mínimo 10 caracteres.
+       			</div>
+       		</div>
+         </div>
+         <div class="form-group">
+           <label for="id_turno">Turno: </label>
+           <input type="text" class="form-control" name="id_turno"
+           ng-model="curso.id_turno" placeholder="Id turno" ng-required="true" ng-minlength="1">
+
+           <!-- ng-messages | campo ID turno | 2nd -->
+           <div ng-messages="formcurso.id_turno.$error" ng-if='formcurso.id_turno.$dirty'>
+       			<div ng-message="required" class="alert alert-danger">
+       				Por favor, preencha o campo ID turno!
+       			</div>
+       		</div>
+         </div>
+        <input type= 'reset' name='limpar' value= 'Limpar' class="btn btn-secondary btn-lg btn-block">
+            <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block">Cadastrar</button>
       </form>
     </main>
     <footer>
-      <h6> Projeto - Turma informática IV</h6>
+      <h6> Projeto - Turma informática IV - Davvi Duarte</h6>
     </footer>
   </body>
 </html>
