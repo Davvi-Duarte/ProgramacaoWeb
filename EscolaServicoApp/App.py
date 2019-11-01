@@ -2,8 +2,10 @@ from flask import Flask
 from flask_json_schema import JsonSchema, JsonValidationError
 from flask import request
 from flask import jsonify
+from flask_cors import CORS
 import sqlite3
 import logging
+
 
 app = Flask(__name__)
 
