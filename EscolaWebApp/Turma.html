@@ -26,7 +26,7 @@
   </head>
   <body>
     <header>
-      Cadastros
+      <a href="index.html">Cadastros</a>
       <nav class="navbar navbar-expand-lg navigation">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon white">=</span>
@@ -51,18 +51,29 @@
         </div>
       </nav>
     </header>
-    <main ng-controller="TurmaController">
-     <h1 class="turno"> Cadastrar Turno</h1>
-      <form class="formturno formulario" action="http://localhost:5000/turno" method="POST">
+    <main ng-controller="TurmaController" class="forms">
+     <h1 class="turno"> Cadastrar Turma</h1>
+      <form class="formulario" name="formturma" action="http://localhost:5000/turno" method="POST">
         <div class="form-group">
-          <label for="nome">Turno: </label>
-          <input type="text" class="form-control" name="nome">
+          <label for="nome">Nome da Turma: </label>
+          <input type="text" class="form-control" name="nome"
+          ng-model="turma.nome" placeholder="Nome" ng-required="true" ng-minlength="5"/>
+
+          <div ng-messages="formturma.nome.$error" ng-if='formturma.nome.$dirty'>
+      			<div ng-message="required" class="alert alert-danger">
+      				Por favor, preencha o campo nome!
+      			</div>
+      			<div ng-message="minlength" class="alert alert-info">
+      				O campo nome deve ter no mínimo 5 caracteres.
+      			</div>
+      		</div>
         </div>
-        <button type="button" class="btn btn-outline-light btn-block">Cadastrar</button>
+        <input type= 'reset' name='limpar' value= 'Limpar' class="btn btn-secondary btn-lg btn-block">
+            <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block">Cadastrar</button>
       </form>
     </main>
     <footer>
-      <h6> Projeto - Turma informática IV</h6>
+      <h6> Projeto - Turma informática IV - Davvi Duarte</h6>
     </footer>
   </body>
 </html>
