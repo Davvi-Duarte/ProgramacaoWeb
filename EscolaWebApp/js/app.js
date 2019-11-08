@@ -15,7 +15,7 @@ var homeController = function($scope){
 app.controller('HomeController', homeController);
 
 
-var alunoController = function($scope){
+var alunoController = function($scope, alunoApi){
   $scope.nome = "";
   $scope.matricula = "";
   $scope.cpf = "";
@@ -24,10 +24,23 @@ var alunoController = function($scope){
   $scope.id_endereço = "";
 
   $scope.cadastrar = function() {
+    alunoApi.listar()
+    //se der certo vai pro THEN, se nao, CATCH
+      .then(function(response) {
+          console.log("Requisicao enviada e recebida com sucesso");
+          console.log(response);
+      })
+
+      .catch(function(error) {
+          console.log("Houve um problema na requisicao")
+          console.log(erro);
+      });
+    /*
     alunoApi.cadastrar($scope.aluno)
       .then(function(response) {})
       .catch(function(error) {});
     $scope.formaluno.$setPristine();
+    */
   }
 }
 app.controller('AlunoController', alunoController);
