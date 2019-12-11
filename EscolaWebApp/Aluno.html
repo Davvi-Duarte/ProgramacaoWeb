@@ -1,5 +1,5 @@
 
-    <form name"formaluno" class="formulario" action= "http://localhost:5000/aluno" method="POST">
+    <form name"formaluno">
       <div class="form-group">
     <!-- Nome -->
     <label for='nome'> Nome: </label>
@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
           <label for="nascimento">Nascimento: </label>
-          <input type="text" class="form-control" name="nascimento"
+          <input type="date" class="form-control" name="nascimento"
           ng-model="aluno.nascimento" placeholder="Nascimento" ng-required="true">
 
           <div ng-messages="formaluno.nascimento.$error" ng-if='formaluno.nascimento.$dirty'>
