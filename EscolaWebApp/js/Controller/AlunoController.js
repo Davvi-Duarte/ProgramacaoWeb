@@ -17,6 +17,7 @@ var alunoController = function($scope, $mdToast, alunoApi){
         .hideDelay(6000)
         .toastClass('my-success');
         $mdToast.show(toast);
+        $scope.formaluno.$setPristine();
       });
     /*
     alunoApi.cadastrar($scope.aluno)

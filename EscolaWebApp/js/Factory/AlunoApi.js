@@ -1,5 +1,5 @@
 var alunoFactory = function($http) {
-  var urlBase = "localhost:5000";
+  var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
     return $http.get(_urlBase + "/alunos")

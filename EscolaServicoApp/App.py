@@ -20,24 +20,6 @@ logger.setLevel(logging.INFO)
 schema=JsonSchema()
 schema.init_app(app)
 
-schema_escola = {
-    'required': ['nome', 'fk_id_endereco', 'fk_id_campus'],
-    'properties': {
-    'nome': {'type': 'string'},
-    'id_endereco': {'type': 'integer'},
-    'id_campus': {'type': 'integer'}
-    }
-}
-
-schema_campus = {
-    'required': ['sigla', 'cidade'],
-    'properties': {
-        'sigla': {'type': 'string'},
-        'cidade': {'type': 'string'}
-    }
-}
-
-
 schema_endereco = {
     'required': ['logradouro', 'complemento',  'bairro', 'cep', 'numero'],
     'properties': {
@@ -45,17 +27,18 @@ schema_endereco = {
         'complemento': {'type': 'string'},
         'bairro': {'type': 'string'},
         'cep': {'type': 'string'},
-        'numero': {'type': 'integer'}
+        'numero': {'type': 'string'}
     }
 }
 
-schema_turno = {
-    'required': ['nome'],
+schema_escola = {
+    'required': ['nome', 'fk_id_endereco', 'fk_id_campus'],
     'properties': {
-        'nome': {'type': 'string'}
+        'nome': {'type': 'string'},
+        'fk_id_endereco': {'type': 'integer'},
+        'fk_id_campus': {'type': 'integer'}
     }
 }
-
 
 schema_aluno = {
     'required': ['nome', 'matricula', 'cpf', 'nascimento', 'fk_id_endereco', 'fk_id_curso'],
@@ -65,23 +48,6 @@ schema_aluno = {
         'cpf': {'type': 'string'},
         'nascimento': {'type': 'string'},
         'id_endereco': {'type': 'integer'},
-        'id_curso': {'type': 'integer'}
-    }
-}
-
-
-schema_curso = {
-    'required': ['nome','turno','fk_id_turno'],
-    'properties': {
-        'nome': {'type': 'string'},
-        'id_turno': {'type': 'integer'}
-    }
-}
-
-schema_turma = {
-    'required': ['nome','fk_id_curso'],
-    'properties': {
-        'nome': {'type': 'string'},
         'id_curso': {'type': 'integer'}
     }
 }
@@ -101,6 +67,39 @@ schema_disciplina = {
         'id_professor': {'type': 'integer'}
     }
 }
+
+schema_curso = {
+    'required': ['nome','fk_id_turno'],
+    'properties': {
+        'nome': {'type': 'string'},
+        'id_turno': {'type': 'integer'}
+    }
+}
+
+schema_campus = {
+    'required': ['sigla','cidade'],
+    'properties': {
+        'sigla': {'type': 'string'},
+        'cidade': {'type': 'string'}
+    }
+}
+
+schema_turma = {
+    'required': ['nome','fk_id_curso'],
+    'properties': {
+        'nome': {'type': 'string'},
+        'id_curso': {'type': 'integer'}
+    }
+}
+
+schema_turno = {
+    'required': ['nome'],
+    'properties': {
+        'nome': {'type': 'string'}
+    }
+}
+
+
 
 database = 'EscolaApp_versao2.db'
 
@@ -276,22 +275,26 @@ def setAlunos():
     logger.info("Cadastrando alunos.")
     try:
         aluno = request.get_json()
+        print(aluno)
         nome = aluno['nome']
+        print(nome)
         matricula = aluno['matricula']
+        print(matricula)
         cpf = aluno['cpf']
+        print(cpf)
         nascimento = aluno['nascimento']
-        fk_id_endereco = aluno['fk_id_endereco']
-        fk_id_curso = aluno['fk_id_curso']
+        print(nascimento)
+        id_endereco = aluno['fk_id_endereco']
+        print(id_endereco)
+        id_curso = aluno['fk_id_curso']
+        print(id_curso)
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
-        cursor.execute("""
-            INSERT INTO tb_aluno(nome, matricula, cpf, nascimento, fk_id_endereco, fk_id_curso)
-            VALUES(?,?,?,?,?,?); """, (nome, matricula, cpf, nascimento, fk_id_endereco, fk_id_curso))
+        cursor.execute(""" INSERT INTO tb_aluno(nome, matricula, cpf, nascimento, fk_id_endereco, fk_id_curso) VALUES(?,?,?,?,?,?); """, (nome, matricula, cpf, nascimento, id_endereco, id_curso))
         conn.commit()
         conn.close()
-
-        id = cursor.lastrowid
-        aluno["id"] = id
+        id_aluno = cursor.lastrowid
+        aluno["id_aluno"] = id_aluno
     except(sqlite3.Error):
         logger.error("Aconteceu um erro")
 
