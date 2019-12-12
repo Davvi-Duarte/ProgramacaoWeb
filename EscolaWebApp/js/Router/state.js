@@ -26,6 +26,18 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         title: 'EscolaApp - Listar Alunos',
         templateUrl: 'Alunos.html',
         controller: 'AlunosController'
+      })
+      .state('campus', {
+        url: '/campus',
+        title: 'EscolaApp - Cadastrar Campus',
+        templateUrl: 'Campus.html',
+        controller: 'CampusController'
+      })
+      .state('campi', {
+        url: '/campi',
+        title: 'EscolaApp - Listar Campi',
+        templateUrl: 'Campi.html',
+        controller: 'CampiController'
       });
   })
   //take all whitespace out of string

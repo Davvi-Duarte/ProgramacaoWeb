@@ -4,7 +4,7 @@ var campiController = function($scope, $mdToast, campusApi) {
 
   $scope.listar = function() {
     console.log("Listando")
-    alunoApi.listar()
+    campusApi.listar()
       .then(function(response) {
         $scope.campi = response.data;
       })
@@ -15,7 +15,7 @@ var campiController = function($scope, $mdToast, campusApi) {
 
   $scope.pesquisar = function(nome) {
     if (nome.length >= 3) {
-      alunoApi.buscarPorNome(nome)
+      campusApi.buscarPorNome(nome)
         .then(function(response) {
           $scope.campi = response.data;
         })
