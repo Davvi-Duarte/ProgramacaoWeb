@@ -5,10 +5,10 @@ var enderecoFactory = function($http) {
   var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
-    return $http.get(_urlBase + "/enderecos")
+    return $http.get(urlBase + "/enderecos")
   };
   var _buscarPorId = function(id) {
-    return $http.get(_urlBase + "/enderecos/" + encodeURI(id))
+    return $http.get(urlBase + "/enderecos/" + encodeURI(id))
   };
   var _cadastrar = function(endereco) {
     return $http.post(urlBase + "/endereco", endereco)

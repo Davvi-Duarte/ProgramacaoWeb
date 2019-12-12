@@ -27,21 +27,21 @@ schema_endereco = {
         'complemento': {'type': 'string'},
         'bairro': {'type': 'string'},
         'cep': {'type': 'string'},
-        'numero': {'type': 'string'}
+        'numero': {'type': 'integer'}
     }
 }
 
 schema_escola = {
-    'required': ['nome', 'fk_id_endereco', 'fk_id_campus'],
+    'required': ['nome', 'id_endereco', 'id_campus'],
     'properties': {
         'nome': {'type': 'string'},
-        'fk_id_endereco': {'type': 'integer'},
-        'fk_id_campus': {'type': 'integer'}
+        'id_endereco': {'type': 'integer'},
+        'id_campus': {'type': 'integer'}
     }
 }
 
 schema_aluno = {
-    'required': ['nome', 'matricula', 'cpf', 'nascimento', 'fk_id_endereco', 'fk_id_curso'],
+    'required': ['nome', 'matricula', 'cpf', 'nascimento', 'id_endereco', 'id_curso'],
     'properties': {
         'nome': {'type': 'string'},
         'matricula': {'type': 'string'},
@@ -53,7 +53,7 @@ schema_aluno = {
 }
 
 schema_professor = {
-    'required': ['nome', 'fk_id_endereco'],
+    'required': ['nome', 'id_endereco'],
     'properties': {
         'nome': {'type': 'string'},
         'id_endereco': {'type': 'integer'}
@@ -61,7 +61,7 @@ schema_professor = {
 }
 
 schema_disciplina = {
-    'required': ['nome', 'fk_id_professor'],
+    'required': ['nome', 'id_professor'],
     'properties': {
         'nome': {'type': 'string'},
         'id_professor': {'type': 'integer'}
@@ -69,7 +69,7 @@ schema_disciplina = {
 }
 
 schema_curso = {
-    'required': ['nome','fk_id_turno'],
+    'required': ['nome','id_turno'],
     'properties': {
         'nome': {'type': 'string'},
         'id_turno': {'type': 'integer'}
@@ -85,7 +85,7 @@ schema_campus = {
 }
 
 schema_turma = {
-    'required': ['nome','fk_id_curso'],
+    'required': ['nome','id_curso'],
     'properties': {
         'nome': {'type': 'string'},
         'id_curso': {'type': 'integer'}
@@ -162,8 +162,8 @@ def setEscola():
     try:
         escola = request.get_json()
         nome = escola['nome']
-        fk_id_endereco = escola['fk_id_endereco']
-        fk_id_campus = escola['fk_id_campus']
+        fk_id_endereco = escola['id_endereco']
+        fk_id_campus = escola['id_campus']
         conn = sqlite3.connect(database)
 
         cursor = conn.cursor()
@@ -187,8 +187,8 @@ def updateEscola(id):
     try:
         escola = request.get_json()
         nome = escola["nome"]
-        fk_id_endereco = escola["fk_id_endereco"]
-        fk_id_campus = escola["fk_id_campus"]
+        fk_id_endereco = escola["id_endereco"]
+        fk_id_campus = escola["id_campus"]
         conn = sqlite3.connect(databaseName)
         cursor = conn.cursor()
         cursor.execute("""
@@ -279,8 +279,8 @@ def setAlunos():
         matricula = aluno['matricula']
         cpf = aluno['cpf']
         nascimento = aluno['nascimento']
-        fk_id_endereco = aluno['fk_id_endereco']
-        fk_id_curso = aluno['fk_id_curso']
+        fk_id_endereco = aluno['id_endereco']
+        fk_id_curso = aluno['id_curso']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -306,8 +306,8 @@ def updateAluno(id):
         matricula = aluno["matricula"]
         cpf = aluno["cpf"]
         nascimento = aluno["nascimento"]
-        fk_id_endereco = aluno["fk_id_endereco"]
-        fk_id_curso = aluno["fk_id_curso"]
+        fk_id_endereco = aluno["id_endereco"]
+        fk_id_curso = aluno["id_curso"]
 
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
@@ -389,7 +389,7 @@ def setCurso():
     try:
         curso = request.get_json()
         nome = curso['nome']
-        id_turno = curso['fk_id_turno']
+        id_turno = curso['id_turno']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -414,7 +414,7 @@ def updateCurso(id):
     try:
         curso = request.get_json()
         nome = curso['nome']
-        fk_id_turno = curso['fk_id_turno']
+        fk_id_turno = curso['id_turno']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -493,7 +493,7 @@ def setTurma():
     try:
         turma = request.get_json()
         nome = turma['nome']
-        fk_id_curso = turma['fk_id_curso']
+        fk_id_curso = turma['id_curso']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -515,7 +515,7 @@ def updateTurma(id):
     try:
         turma = request.get_json()
         nome = turma['nome']
-        fk_id_curso = turma['fk_id_curso']
+        fk_id_curso = turma['id_curso']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -595,7 +595,7 @@ def setDisciplina():
     try:
         disciplina = request.get_json()
         nome = disciplina['nome']
-        fk_id_professor = disciplina['fk_id_professor']
+        fk_id_professor = disciplina['id_professor']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -618,7 +618,7 @@ def updateDisciplina(id):
     try:
         disciplina = request.get_json()
         nome = disciplina['nome']
-        fk_id_professor = disciplina['fk_id_professor']
+        fk_id_professor = disciplina['id_professor']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
@@ -795,7 +795,7 @@ def setProfessor():
     try:
         professor = request.get_json()
         nome = professor['nome']
-        fk_id_endereco = professor['fk_id_endereco']
+        fk_id_endereco = professor['id_endereco']
         print(nome, fk_id_endereco)
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
@@ -818,7 +818,7 @@ def updateProfessor(id):
     try:
         professor = request.get_json()
         nome = professor["nome"]
-        fk_id_endereco = professor["fk_id_endereco"]
+        fk_id_endereco = professor["id_endereco"]
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""

@@ -3,15 +3,15 @@
   margin: 0;
   background: #EEDD82;
 
-  /*Flex*/
+
   display: flex;
-  flex-direction: row-reverse;
+  
 }
 
 .navbar-nav{
   list-style: none;
   display: flex;
-  flex-direction: row-reverse;
+
   margin: 0;
 }
 

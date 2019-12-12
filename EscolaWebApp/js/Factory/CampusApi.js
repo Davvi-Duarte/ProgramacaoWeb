@@ -4,10 +4,10 @@ var campusFactory = function($http) {
   var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
-    return $http.get(_urlBase+ "/campi")
+    return $http.get(urlBase+ "/campi")
   };
   var _buscarPorId = function(id) {
-    return $http.get(_urlBase + "/campi/" + encodeURI(id))
+    return $http.get(urlBase + "/campi/" + encodeURI(id))
   };
   var _cadastrar = function(campus) {
     return $http.post(urlBase + "/campus", campus)

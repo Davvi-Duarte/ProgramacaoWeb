@@ -17,7 +17,11 @@ var alunoController = function($scope, $mdToast, $state, alunoApi) {
         limparFormulario();
 
         // Redirecionamento de página.
-        $state.transitionTo('alunos', {reload: true, inherit: false, notify: true});
+        $state.transitionTo('alunos', {
+          reload: true,
+          inherit: false,
+          notify: true
+        });
 
         // Caixa de confirmação - Toast
         var toast = $mdToast.simple()
@@ -44,9 +48,7 @@ var alunoController = function($scope, $mdToast, $state, alunoApi) {
 
     // Reinicializa o estado do campo para os eventos e validação.
     // É necessário indicar o atributo name no formulário <form>
-    $scope.alunoForm.$setPristine();
-    $scope.alunoForm.$setUntouched();
-    $scope.alunoForm.$setValidity();
+
   }
 }
 

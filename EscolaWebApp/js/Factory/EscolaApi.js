@@ -3,10 +3,10 @@ var escolaFactory = function($http) {
   var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
-    return $http.get(_urlBase + "/escolas")
+    return $http.get(urlBase + "/escolas")
   };
   var _buscarPorId = function(id) {
-    return $http.get(_urlBase + "/escolas/" + encodeURI(id))
+    return $http.get(urlBase + "/escolas/" + encodeURI(id))
   };
   var _cadastrar = function(escola) {
     return $http.post(urlBase + "/escola", escola)

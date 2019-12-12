@@ -4,10 +4,10 @@ var professorFactory = function($http) {
   var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
-    return $http.get(_urlBase + "/professores")
+    return $http.get(urlBase + "/professores")
   };
   var _buscarPorId = function(id) {
-    return $http.get(_urlBase + "/professores/" + encodeURI(id))
+    return $http.get(urlBase + "/professores/" + encodeURI(id))
   };
   var _cadastrar = function(professor) {
     return $http.post(urlBase + "/professor", professor)

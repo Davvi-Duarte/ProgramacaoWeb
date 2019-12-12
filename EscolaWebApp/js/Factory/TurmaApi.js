@@ -4,10 +4,10 @@ var turmaFactory = function($http) {
   var urlBase = "http://127.0.0.1:5000";
 
   var _listar = function() {
-    return $http.get(_urlBase + "/turmas")
+    return $http.get(urlBase + "/turmas")
   };
   var _buscarPorId = function(id) {
-    return $http.get(_urlBase + "/turmas/" + encodeURI(id))
+    return $http.get(urlBase + "/turmas/" + encodeURI(id))
   };
   var _cadastrar = function(turma) {
     return $http.post(urlBase + "/turma", turma)
