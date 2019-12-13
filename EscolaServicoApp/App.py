@@ -389,12 +389,12 @@ def setCurso():
     try:
         curso = request.get_json()
         nome = curso['nome']
-        id_turno = curso['id_turno']
+        fk_id_turno = curso['id_turno']
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO tb_curso(nome, fk_id_turno)
-            VALUES(?,?); """, (nome, id_turno))
+            VALUES(?,?); """, (nome, fk_id_turno))
         conn.commit()
         conn.close()
 

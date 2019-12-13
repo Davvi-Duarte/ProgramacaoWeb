@@ -38,6 +38,18 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         title: 'EscolaApp - Listar Campi',
         templateUrl: 'Campi.html',
         controller: 'CampiController'
+      })
+        .state('curso', {
+          url: '/curso',
+          title: 'EscolaApp - Cadastrar Curso',
+          templateUrl: 'Curso.html',
+          controller: 'CursoController'
+        })
+        .state('cursos', {
+          url: '/cursos',
+          title: 'EscolaApp - Listar Cursos',
+          templateUrl: 'Cursos.html',
+          controller: 'CursosController'
       });
   })
   //take all whitespace out of string
